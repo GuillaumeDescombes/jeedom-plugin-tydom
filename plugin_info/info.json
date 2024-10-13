@@ -1,0 +1,14 @@
+{
+	"id" : "tydom",
+	"name" : "tydom",
+	"description" : "Plugin pour utiliser Tydom",
+	"licence" : "AGPL",
+	"author" : "G. Descombes",
+	"require" : "3.2",
+	"category" : "automation protocol",
+	"hasDependency" : true,
+	"hasOwnDeamon" : true,
+	"maxDependancyInstallTime" : 0,
+	"changelog" : "https://github.com/GuillaumeDescombes/tydomJeedom",
+	"documentation" : "https://github.com/GuillaumeDescombes/tydomJeedom"
+}

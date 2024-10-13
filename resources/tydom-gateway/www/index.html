@@ -1,0 +1,115 @@
+<html>
+<head>
+  <title>Tydom Gateway</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+</head>
+<body>
+  <div style="margin:100px;">
+    <nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">Tydom Gateway</a>
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/info">info</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="jumbotron"  style="padding:40px;">
+      <h2>Tydom Gateway</h2>
+      <p>The gateway is enabled.</p>
+      <h2>Tydom status</h2>
+        <div id="status"></div>
+	<script>
+	$.ajax({
+
+                  url: './info',
+
+                  success:function(data){
+                       // this part is what happens with the JSON data
+                        console.log(data);
+			content="<pre>" + JSON.stringify(data, undefined, 2) + "</pre>";
+			$("#status").append(content);
+		  },
+
+                    error: function(errorThrown){
+                       console.log(errorThrown);
+                    }
+
+        });  
+	</script>
+      <h2>Known Tydom interface</h2>
+<p>
+<table class="table">
+<thead>
+<tr>
+<th><strong>Method</strong></th>
+<th><strong>Uri</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>/info</td>
+<td>get generic tydom information</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/ping</td>
+<td>ping tydom</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/devices/data</td>
+<td>Get tydom devices data/state</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/devices/meta</td>
+<td>Get tydom devices meta</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/devices/cmeta</td>
+<td>Get tydom devices command meta</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/configs/file</td>
+<td>Get tydom user config</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/protocols</td>
+<td>List available protocols</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/refresh/all</td>
+<td>Force refresh tydom devices data</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/devices/${DEVICE_ID}/endpoints/${ENDPOINT_ID}/data</td>
+<td>GET tydom device data/state</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/devices/${DEVICE_ID}/endpoints/${ENDPOINT_ID}/data/{NAME}/{VALUE}</td>
+<td>Update tydom device data/state</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p>More details on <a href="https://www.npmjs.com/package/tydom-client">tycom-client nodejs</a> website.</p>
+  </div>
+</body>
+</html>
